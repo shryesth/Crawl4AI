@@ -139,7 +139,7 @@ def get_urls(site_map_url: str) -> List[str]:
         return []
 
 async def main():
-    site_map_url = "https://docs.crawl4ai.com/sitemap.xml"
+    site_map_url = "https://fastapi.tiangolo.com/sitemap.xml"
     urls = get_urls(site_map_url)
     if urls:
         print(f"Found {len(urls)} URLs to crawl")
