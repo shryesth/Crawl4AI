@@ -129,3 +129,4 @@ cython_debug/
 .vscode/
 
 downloads/
+my_chrome_profile/
