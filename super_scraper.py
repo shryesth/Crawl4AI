@@ -54,8 +54,10 @@ class WebScraper:
         self.logger.info("Starting parallel crawling")
         browser_config = BrowserConfig(
             headless=True, 
-            verbose=False, 
-            extra_args=["--disable-gpu", "--disable-dev-shm-usage", "--no-sandbox"]
+            verbose=False,
+            use_managed_browser=True,
+            user_data_dir=r"C:\Users\fds44813\OneDrive - FactSet\Desktop\Projects\Crawl4AI\my_chrome_profile"
+            # extra_args=["--disable-gpu", "--disable-dev-shm-usage", "--no-sandbox"]
         )
         crawl_config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS)
         crawler = AsyncWebCrawler(config=browser_config)
@@ -114,12 +116,19 @@ async def main():
     # await scraper.scrape_from_sitemap(sitemap_url)
 
     urls = [
-        "https://example.com/page1",
-        "https://example.com/page2",
-        "https://example.com/page3"
+        "https://lms.productinstitute.com/course/2/lesson/208"
+        # "https://example.com/page2",
+        # "https://example.com/page3"
     ]
     scraper = WebScraper(output_dir="web_scraper_output")
     await scraper.scrape_multiple(urls)
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+#https://crawl4ai.com/mkdocs/advanced/identity-based-crawling/
+
+#$ python -m playwright install --dry-run
+# "C:\Users\fds44813\AppData\Local\ms-playwright\chromium-1148\chrome-win\chrome.exe" ^
+    # --user-data-dir="C:\Users\fds44813\OneDrive - FactSet\Desktop\Projects\Crawl4AI\my_chrome_profile"
